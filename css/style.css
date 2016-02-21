@@ -316,23 +316,29 @@ body {
     transition: transform 500ms 900ms linear;
 }
 /*animation css*/
-/* Chrome, Safari, Opera */
 @-webkit-keyframes audioRotate {
     from {
+        -ms-transform: rotate(0deg);
+        -webkit-transform: rotate(0deg);
         transform: rotate(0deg);
     }
     to {
-        transform: rotate(360deg)
+        -ms-transform: rotate(360deg);
+        -webkit-transform: rotate(360deg);
+        transform: rotate(360deg);
     }
 }
 
-/* Standard syntax */
 @keyframes audioRotate {
     from {
+        -ms-transform: rotate(0deg);
+        -webkit-transform: rotate(0deg);
         transform: rotate(0deg);
     }
     to {
-        transform: rotate(360deg)
+        -ms-transform: rotate(360deg);
+        -webkit-transform: rotate(360deg);
+        transform: rotate(360deg);
     }
 }
 
