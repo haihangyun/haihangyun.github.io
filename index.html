@@ -53,8 +53,6 @@
 <script src="js/vendor/zepto.fullpage.js"></script>
 <script>
     window.onload = function () {
-        // autoplay manually
-        $('audio').trigger('touchend');
         $('.play').on('touchend', function () {
             if ($(this).hasClass('audio-on')) {
                 $('audio')[0].pause();
@@ -64,6 +62,8 @@
                 $(this).addClass('audio-on').removeClass('animate-state-pause');
             }
         });
+        // autoplay manually
+        $('audio').get(0).play();
 
         $('.container-fullpage').fullpage({
             change: function (e) {
