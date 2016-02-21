@@ -1,1 +1,89 @@
-海航云科技
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/style.css"/>
+    <link rel="stylesheet" href="css/vendor/zepto.fullpage.css"/>
+</head>
+<body>
+<div class="container">
+    <div class="play audio-on animate img-sprite"></div>
+    <div class="hidden">
+        <audio controls="controls" autoplay>
+            <source src="audio/whistle.mp3" type="audio/mpeg"/>
+            Your browser does not support the audio element.
+        </audio>
+    </div>
+    <div class="container-fullpage">
+        <div class="page page1">
+            <div class="page-inner">
+                <div class="animate-1 img-sprite"></div>
+                <div class="animate-2 img-sprite"></div>
+                <div class="animate-3 img-sprite"></div>
+                <div class="animate-4 img-sprite"></div>
+                <div class="animate-5 img-sprite"></div>
+                <div class="animate-6 img-sprite"></div>
+                <div class="animate-7 img-sprite"></div>
+                <div class="animate-8 img-sprite"></div>
+                <div class="animate-9 img-sprite"></div>
+            </div>
+        </div>
+        <div class="page page2">
+            <div class="page-inner">
+                <div class="animate-1 img-sprite"></div>
+                <div class="animate-2 img-sprite"></div>
+                <div class="animate-3 img-sprite"></div>
+                <div class="animate-4 img-sprite"></div>
+                <div class="animate-5 img-sprite"></div>
+                <div class="animate-6 img-sprite"></div>
+                <div class="animate-7 img-sprite"></div>
+                <div class="animate-8 img-sprite"></div>
+                <div class="animate-9 img-sprite"></div>
+                <div class="animate-10 img-sprite"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="js/vendor/zepto.min.js"></script>
+<script src="js/vendor/zepto.fullpage.js"></script>
+<script>
+    $(function () {
+        $('.play').on('click', function () {
+            if ($(this).hasClass('audio-on')) {
+                $('audio')[0].pause();
+                $(this).removeClass('audio-on').addClass('animate-state-pause');
+            } else {
+                $('audio')[0].play();
+                $(this).addClass('audio-on').removeClass('animate-state-pause');
+            }
+        });
+        var cur = 0;
+
+        function isDown(start, end) {
+            return start > end;
+        }
+
+        $('.container-fullpage').fullpage({
+            change: function (e) {
+//                    cur = e.cur;
+                console.log(e.cur, 'change');
+                $('.page .page-inner').removeClass('current-animate');
+
+//                    if((e.cur-1) >= 0){
+//                        $('.page .page-inner').eq(e.cur-1).removeClass('current-animate');
+//                    }
+            },
+            afterChange: function (e) {
+                cur = e.cur;
+                console.log(e.cur, 'end');
+                $('.page .page-inner').eq(e.cur).addClass('current-animate');
+            }
+        });
+    })
+
+</script>
+</body>
+</html>
